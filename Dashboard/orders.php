@@ -190,10 +190,11 @@
                                 <div class="col-n-3">
                                     <h5>Date & Time:</h5>
                                     <?php
-                                        if($row['DateTime']){
-                                            $dateTime = explode(" ", $row['DateTime']);
-                                            $date = $dateTime[0];
-                                            $time = explode(":", $dateTime[1]);
+                                        if($row['Date']){
+                                            // $dateTime = explode(" ", $row['DateTime']);
+                                            $date = $row['Date'];
+                                            $time = $row['Time'];
+                                            $time = explode(":", $time);
                                             if($time[0] >= 12){
                                                 $time = ($time[0] - 12) . ":" . $time[1] . " PM";
                                             }else{

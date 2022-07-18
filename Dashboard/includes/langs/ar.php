@@ -46,19 +46,19 @@
             "EDIT"              => "تعديل",
             "DELETE"            => "حذف",
             // Employee Edit Page
-            "EMP_EDIT_TITLE"    => "Edit Employee Data",
+            "EMP_EDIT_TITLE"    => "تعديل بيانات الموظف",
             // forms 
-            "FULL_NAME"         => "Full Name",
-            "EMP_NAME_REQ"      => "Employee Name Is Required",
-            "EMP_USER_REQ"      => "Employee Username Is Required",
-            "EMP_EMAIL_REQ"     => "Employee Email Is Required",
-            "PHONE"             => "Phone",
-            "EMP_PHONE_REQ"     => "Employee Phone Number Is Required",
-            "PASSWORD"          => "Password",
-            "COUNTRY"           => "Country",
-            "EMP_COUNTRY_REQ"   => "Employee Country Is Required",
-            "CITY"              => "City",
-            "EMP_CITY_REQ"      => "Employee City Is Required",
+            "FULL_NAME"         => "الاسم الكامل",
+            "EMP_NAME_REQ"      => "الاسم الكامل مطلوب",
+            "EMP_USER_REQ"      => "اسم المستخدم مطلوب",
+            "EMP_EMAIL_REQ"     => "الايميل مطلوب",
+            "PHONE"             => "الهاتف",
+            "EMP_PHONE_REQ"     => "رقم الهاتف مطلوب",
+            "PASSWORD"          => "كلمة السر",
+            "COUNTRY"           => "الدولة",
+            "EMP_COUNTRY_REQ"   => "اسم الدولة مطلوب",
+            "CITY"              => "المدينة",
+            "EMP_CITY_REQ"      => "اسم المدينة مطلوب",
             
         );
 
