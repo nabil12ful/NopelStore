@@ -2339,3 +2339,31 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
   color: #555;
 }
 /*# sourceMappingURL=style.css.map */
+/* btn */
+
+	.btns {
+    height: 40px;
+    max-width: 300px;
+    margin: auto;
+
+    margin-bottom: 50px;
+}
+.btns ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.btns ul li {
+    display: inline-block;
+    margin-top: 10px;
+    background-color: var(--header-color);
+    color: var(--text-color);
+}
+.btns ul li a {
+    background: rgb(24, 24, 73);
+    padding: 5px 12px;
+    color: rgb(245, 245, 245);
+    text-decoration: none;
+    border-radius: 5px;
+}
+
