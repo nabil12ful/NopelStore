@@ -2360,10 +2360,16 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
     color: var(--text-color);
 }
 .btns ul li a {
+    border: 3px solid rgb(24, 24, 73);
+    padding: 5px 12px;
+    color: rgb(24, 24, 73);
+    text-decoration: none;
+    border-radius: 8px;
+}
+.btns ul li a:hover {
     background: rgb(24, 24, 73);
     padding: 5px 12px;
-    color: rgb(245, 245, 245);
+    color: rgb(255, 255, 255);
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 8px;
 }
-

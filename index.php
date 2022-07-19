@@ -1,16 +1,10 @@
 <?php
 
     ob_start();
-    $title = "RedStore";
+    $title = "NopelStore";
     include('init.php');
     include_once(_TEMPS_.'slider.php'); ?>
 <? //content ?>
-
-
-
-
-
-
 
     <section class="product-category section">
         <div class="container">
@@ -55,7 +49,7 @@
             </div>
         </div>
     </section>
-
+    
     <section class="products section bg-gray">
         <div class="container">
             <div class="row">
@@ -142,14 +136,6 @@
             </div>
         </div>
     </section>
-
-
-
-
-
-
-
-
 
     <?php
     include(_TEMPS_."footer.php");

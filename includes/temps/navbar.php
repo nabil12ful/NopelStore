@@ -56,7 +56,7 @@
                                         <ul>
                                             <li class="dropdown-header">All</li>
                                             <li role="separator" class="divider"></li>
-                                            <li><a href="product-single.html">Shop All products</a></li>
+                                            <li><a href="shop.php">Shop All products</a></li>
 
                                         </ul>
                                     </div>
