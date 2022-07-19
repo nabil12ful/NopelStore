@@ -74,12 +74,12 @@
         <?php
     }elseif($p == "edit"){ // Edit Category Page
         echo '<div class="profile-body">';
-            echo '<h3>Edit Department</h3><hr>';
+            echo '<h3>Edit Role</h3><hr>';
             echo '<div class="user-info">';
                 if(isset($_GET['id']) && is_numeric($_GET['id'])){
-                    $check = checkItem($_GET['id'], "ID", "sections");
+                    $check = checkItem($_GET['id'], "ID", "roles");
                     if($check > 0){
-                        $stmt2 = $con->prepare("SELECT * FROM sections WHERE ID = ?");
+                        $stmt2 = $con->prepare("SELECT * FROM roles WHERE ID = ?");
                         $stmt2->execute(array($_GET['id']));
                         $row = $stmt2->fetch(); ?>
                             <form action="?p=update" method="POST" class="form-horizonal was-validated" novalidate>
@@ -93,19 +93,11 @@
                                     </div>
                                 </div>
                                 <!-- End Name Field -->
-                                <!-- Start Description Field -->
-                                <div class="form-group form-group-lg row">
-                                    <label for="" class="col-sm-2 col-form-label">Description:</label>
-                                    <div class="col-sm-10 col-md-6 form-g input-group has-validation">
-                                        <input type="text" name="desc" class="form-control" value="<?php echo $row['Description']; ?>" placeholder="Description">
-                                    </div>
-                                </div>
-                                <!-- End Description Field -->
                                 <!-- Start Mobile Field -->
                                 <div class="form-group form-group-lg row">
                                     <label for="" class="col-sm-2 col-form-label">Mobile:</label>
                                     <div class="col-sm-10 col-md-6 form-g">
-                                        <input type="text" name="mobile" class="form-control" value="<?php echo $row['Mobile']; ?>" placeholder="Mobile Of Department">
+                                        <input type="text" name="mobile" class="form-control" value="<?php echo $row['Access']; ?>" placeholder="Mobile Of Department">
                                         <div class="invalid-feedback">Department Mobile Is Required</div>
                                     </div>
                                 </div>
