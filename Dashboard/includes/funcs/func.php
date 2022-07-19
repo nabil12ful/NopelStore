@@ -68,6 +68,7 @@ function getAge($birthdate){
 
 function uploadMultiImages($images, $folder, $maxFiles, $maxSize = 6, $allow_exts = array('jpeg', 'jpg', 'png', 'gif')){
     global $uploads;
+    $folder = $folder . '/';
     if(empty($folder)){
         $location = $uploads . "Undefine/";
     }else{
@@ -116,7 +117,7 @@ function uploadMultiImages($images, $folder, $maxFiles, $maxSize = 6, $allow_ext
             for($i = 0; $i < $count; $i++){
                 if(move_uploaded_file($temps[$i], $location . $allImgs[$i])){
                     $successUploaded = $i + 1;
-                    $success[] = $location . $allImgs[$i];
+                    $success[] = $folder . $allImgs[$i];
                 }else{
                     echo "<h5 class='text-center alert alert-danger'>File number ".($i+1)." has not uploaded</h5>";
                 }

@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html>
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>RedStore | Ecommerce Website Design</title>
-
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="<?php echo $css ?>bootstrap.min.css">
-        <link rel="stylesheet" href="<?php echo $css ?>fontawesome.css">
-        
-        <link rel="stylesheet" href="<?php echo $css ?>style.css?v=<?php echo time()?>">
+        <title><?= !empty($title) ? $title : 'NopelStore' ?></title>
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="<?= echoPath(_IMGS_, 'favicon.png') ?>" />
+        <!-- Themefisher Icon font -->
+        <link rel="stylesheet" href="<?= echoPath(_PLG_, 'themefisher-font/style.css') ?>">
+        <!-- bootstrap.min css -->
+        <link rel="stylesheet" href="<?= echoPath(_PLG_, 'bootstrap/css/bootstrap.min.css') ?>">
+        <!-- Animate css -->
+        <link rel="stylesheet" href="<?= echoPath(_PLG_, 'animate/animate.css') ?>">
+        <!-- Slick Carousel -->
+        <link rel="stylesheet" href="<?= echoPath(_PLG_, 'slick/slick.css') ?>">
+        <link rel="stylesheet" href="<?= echoPath(_PLG_, 'slick/slick-theme.css') ?>">
+        <!-- Main Stylesheet -->
+        <link rel="stylesheet" href="<?= echoPath(_CSS_, 'style.css', true) ?>">
 
     </head>

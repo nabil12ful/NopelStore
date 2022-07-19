@@ -1,290 +1,156 @@
 <?php
 
     ob_start();
-    $pageTitle = "RedStore";
-    include('init.php'); ?>
+    $title = "RedStore";
+    include('init.php');
+    include_once(_TEMPS_.'slider.php'); ?>
+<? //content ?>
 
-        <!----- Categories ----->
-        <div class="categories">
-            <div class="small-container">
-                <div class="row">
-                    <div class="n-col-3">
-                        <img src="<?php echo $imgs ?>category-1.jpg">
+
+
+
+
+
+
+    <section class="product-category section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title text-center">
+                        <h2>New Products</h2>
                     </div>
-                    <div class="n-col-3">
-                        <img src="<?php echo $imgs ?>category-2.jpg">
+                </div>
+
+                <div class="col-md-6">
+                    <div class="category-box">
+                        <a href="#!">
+                            <img src="<?= echoPath(_IMGS_, 'shop/category/category-1.jpg') ?>" alt="" />
+                            <div class="content">
+                                <h3>Clothes Sales</h3>
+                                <p>Shop New Season Clothing</p>
+                            </div>
+                        </a>
                     </div>
-                    <div class="n-col-3">
-                        <img src="<?php echo $imgs ?>category-3.jpg">
+                    <div class="category-box">
+                        <a href="#!">
+                            <img src="<?= echoPath(_IMGS_, 'shop/category/category-2.jpg') ?>" alt="" />
+                            <div class="content">
+                                <h3>Smart Casuals</h3>
+                                <p>Get Wide Range Selection</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="category-box category-box-2">
+                        <a href="#!">
+                            <img src="<?= echoPath(_IMGS_, 'shop/category/category-3.jpg') ?>" alt="" />
+                            <div class="content">
+                                <h3>Jewellery</h3>
+                                <p>Special Design Comes First</p>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-        <!----- End Categories ----->
-        
-        <!----- Start Products ----->
-        <div class="small-container">
-            <?php
-                $stmt = $con->prepare("SELECT * FROM products");
+    </section>
+
+    <section class="products section bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="title text-center">
+                    <h2>Trendy Products</h2>
+                </div>
+            </div>
+            <div class="row">
+                <?php 
+                    $stmt = $con->prepare("SELECT products.*, categories.Name, employee.Username, product_image.Image_Path AS Images FROM `products`
+                                        INNER JOIN categories ON categories.ID = products.Category
+                                        INNER JOIN product_image ON Product_ID = products.ID
+                                        INNER JOIN employee ON employee.ID = products.By_Emp WHERE product_image.Flag = 1
+                                        LIMIT 15");
+                    $stmt->execute();
+                    $prods = $stmt->fetchAll();
+                    foreach($prods AS $prod){ ?>
+
+                        <div class="col-md-4">
+                            <div class="product-item">
+                                <div class="product-thumb">
+                                    <!-- <span class="bage">Sale</span> -->
+                                    <img class="img-responsive" src="<?= echoPath(_UPLAODS_, $prod['Images']) ?>" alt="product-img" />
+                                    <div class="preview-meta">
+                                        <ul>
+                                            <li>
+                                                <span data-toggle="modal" data-target="#product-modal">
+                                                    <i class="tf-ion-ios-search-strong"></i>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <a href="#!"><i class="tf-ion-ios-heart"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#!"><i class="tf-ion-android-cart"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="product-content">
+                                    <h4><a href="product-single.html"><?= $prod['Title'] ?></a></h4>
+                                    <p class="price">EGP <?= $prod['Price'] ?></p>
+                                </div>
+                            </div>
+                        </div>
+
+                    <?php } ?>
                 
-            ?>
-            <!-- Featured Products start -->
-            <h2 class="title">Featured Products</h2>
-            <div class="row">
-                <div class="n-col-4">
-                    <img src="<?php echo $imgs ?>product-1.jpg">
-                    <a href="product/index.html"><h4>Red Printed Tshirt</h4></a>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>
-                    </div>
-                    <p>$50.00</p>
-                </div>
-                <div class="n-col-4">
-                    <img src="<?php echo $imgs ?>product-2.jpg">
-                    <a href="product/index.html"><h4>Red Printed Tshirt</h4></a>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-half-o"></i>
-                        <i class="fa fa-star-o"></i>
-                    </div>
-                    <p>$50.00</p>
-                </div>
-                <div class="n-col-4">
-                    <img src="<?php echo $imgs ?>product-3.jpg">
-                    <a href="product/index.html"><h4>Red Printed Tshirt</h4></a>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-half-o"></i>
-                    </div>
-                    <p>$50.00</p>
-                </div>
-                <div class="n-col-4">
-                    <img src="<?php echo $imgs ?>product-4.jpg">
-                    <a href="product/index.html"><h4>Red Printed Tshirt</h4></a>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>
-                    </div>
-                    <p>$50.00</p>
-                </div>
 
-            </div>
-            <!-- Featured Products end -->
-
-            <!-- Latest Products start -->
-            <h2 class="title">Latest Products</h2>
-            <div class="row">
-                <div class="n-col-4">
-                    <img src="<?php echo $imgs ?>product-5.jpg">
-                    <a href="product/index.html"><h4>Red Printed Tshirt</h4></a>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>
-                    </div>
-                    <p>$50.00</p>
-                </div>
-                <div class="n-col-4">
-                    <img src="<?php echo $imgs ?>product-6.jpg">
-                    <a href="product/index.html"><h4>Red Printed Tshirt</h4></a>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-half-o"></i>
-                        <i class="fa fa-star-o"></i>
-                    </div>
-                    <p>$50.00</p>
-                </div>
-                <div class="n-col-4">
-                    <img src="<?php echo $imgs ?>product-7.jpg">
-                    <a href="product/index.html"><h4>Red Printed Tshirt</h4></a>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-half-o"></i>
-                    </div>
-                    <p>$50.00</p>
-                </div>
-                <div class="n-col-4">
-                    <img src="<?php echo $imgs ?>product-8.jpg">
-                    <a href="product/index.html"><h4>Red Printed Tshirt</h4></a>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>
-                    </div>
-                    <p>$50.00</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="n-col-4">
-                    <img src="<?php echo $imgs ?>product-9.jpg">
-                    <a href="product/index.html"><h4>Red Printed Tshirt</h4></a>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>
-                    </div>
-                    <p>$50.00</p>
-                </div>
-                <div class="n-col-4">
-                    <img src="<?php echo $imgs ?>product-10.jpg">
-                    <a href="product/index.html"><h4>Red Printed Tshirt</h4></a>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-half-o"></i>
-                        <i class="fa fa-star-o"></i>
-                    </div>
-                    <p>$50.00</p>
-                </div>
-                <div class="n-col-4">
-                    <img src="<?php echo $imgs ?>product-11.jpg">
-                    <a href="product/index.html"><h4>Red Printed Tshirt</h4></a>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-half-o"></i>
-                    </div>
-                    <p>$50.00</p>
-                </div>
-                <div class="n-col-4">
-                    <img src="<?php echo $imgs ?>product-12.jpg">
-                    <a href="product/index.html"><h4>Red Printed Tshirt</h4></a>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>
-                    </div>
-                    <p>$50.00</p>
-                </div>
-
-            </div>
-            <!-- Latest Products End -->
-
-        </div>
-
-        <!-- offer start -->
-        <div class="offer">
-            <div class="small-container">
-                <div class="row">
-                    <div class="n-col-2">
-                        <img src="<?php echo $imgs ?>exclusive.png" class="offer-img">
-                    </div>
-                    <div class="n-col-2">
-                        <p>Exclusively Available on RedStore</p>
-                        <h1>Smart Band 4</h1>
-                        <small>The Mi Smart Band 4 features a 39.9% larger (than Mi Band 3) AMOLED color full-touch display with adjustable brightness, so everything is clear as can be.</small><br>
-                        <a href="" class="btn">Buy Now &#8594;</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!----- offer end ----->
-
-
-        <!-- TESTIMONIAL -->
-        <div class="testimonial">
-            <div class="small-container">
-                <div class="row">
-                    <div class="n-col-3">
-                        <i class="fa fa-quote-left"></i>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni quaerat inventore maxime ipsum ab, asperiores dolorem! Repellat adipisci molestiae qui officia consectetur.</p>
-                        
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o"></i>
+                <!-- Modal -->
+                <div class="modal product-modal fade" id="product-modal">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="tf-ion-close"></i>
+                    </button>
+                    <div class="modal-dialog " role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-8 col-sm-6 col-xs-12">
+                                        <div class="modal-image">
+                                            <img class="img-responsive" src="<?= echoPath(_IMGS_, 'shop/products/modal-product.jpg') ?>"
+                                                alt="product-img" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 col-xs-12">
+                                        <div class="product-short-details">
+                                            <h2 class="product-title">GM Pendant, Basalt Grey</h2>
+                                            <p class="product-price">$200</p>
+                                            <p class="product-short-description">
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem iusto
+                                                nihil cum. Illo laborum numquam rem aut officia dicta cumque.
+                                            </p>
+                                            <a href="cart.html" class="btn btn-main">Add To Cart</a>
+                                            <a href="product-single.html" class="btn btn-transparent">View Product
+                                                Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <img src="<?php echo $imgs ?>user-1.png">
-                        <h3>Sean Parker</h3>
                     </div>
-                    <div class="n-col-3">
-                        <i class="fa fa-quote-left"></i>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni quaerat inventore maxime ipsum ab, asperiores dolorem! Repellat adipisci molestiae qui officia consectetur.</p>
-                        
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
-                        <img src="<?php echo $imgs ?>user-2.png">
-                        <h3>Mike Smith</h3>
-                    </div>
-                    <div class="n-col-3">
-                        <i class="fa fa-quote-left"></i>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni quaerat inventore maxime ipsum ab, asperiores dolorem! Repellat adipisci molestiae qui officia consectetur.</p>
-                        
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
-                        <img src="<?php echo $imgs ?>user-3.png">
-                        <h3>Mabel Joe</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- testimonial end -->
+                </div><!-- /.modal -->
 
-        <!-- brands start -->
-        <div class="brands">
-            <div class="small-container">
-                <div class="row">
-                    <div class="n-col-5">
-                        <img src="<?php echo $imgs ?>logo-godrej.png">
-                    </div>
-                    <div class="n-col-5">
-                        <img src="<?php echo $imgs ?>logo-oppo.png">
-                    </div>
-                    <div class="n-col-5">
-                        <img src="<?php echo $imgs ?>logo-coca-cola.png">
-                    </div>
-                    <div class="n-col-5">
-                        <img src="<?php echo $imgs ?>logo-paypal.png">
-                    </div>
-                    <div class="n-col-5">
-                        <img src="<?php echo $imgs ?>logo-philips.png">
-                    </div>
-                </div>
             </div>
         </div>
-        <!-- brands end -->
+    </section>
+
+
+
+
+
+
+
 
 
     <?php
-    include($temps . "footer.php");
+    include(_TEMPS_."footer.php");
     ob_end_flush();

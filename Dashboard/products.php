@@ -70,7 +70,7 @@
                                     echo "<td>".$pro['ID']."</td>";
                                     echo "<td class=\"pro-imgs\">";
                                         if(!empty($pro['Images'])){
-                                            echo "<img src='" . $pro['Images'] . "'>";
+                                            echo "<img src='" . $uploads . $pro['Images'] . "'>";
                                         }else{
                                             echo "<img src='" . $imgs . "user.png'>";
                                         }
@@ -339,7 +339,7 @@
             // Echo Errors Is Exist
             foreach($errors as $err){
                 echo "<h5 class='text-center alert alert-danger'>$err";
-                    echo "<br><a href='customers.php?p=edit&id=$id' class='alert-link'> Back To Edit Customer Page</a>";
+                    echo "<br><a href='products.php?p=edit&id=$id' class='alert-link'> Back To Edit Products Page</a>";
                 echo "</h5>";
             }
             // Update Data In Database
