@@ -49,7 +49,7 @@
             </div>
         </div>
     </section>
-    
+
     <section class="products section bg-gray">
         <div class="container">
             <div class="row">
@@ -75,7 +75,7 @@
                                     <img class="img-responsive" src="<?= echoPath(_UPLAODS_, $prod['Images']) ?>" alt="product-img" />
                                     <div class="preview-meta">
                                         <ul>
-                                            <li>
+                                            <li class="viewItem" data-id="<?= $prod['ID'] ?>">
                                                 <span data-toggle="modal" data-target="#product-modal">
                                                     <i class="tf-ion-ios-search-strong"></i>
                                                 </span>
@@ -96,47 +96,48 @@
                             </div>
                         </div>
 
-                    <?php } ?>
+                <?php } ?>
                 
 
                 <!-- Modal -->
-                <div class="modal product-modal fade" id="product-modal">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <i class="tf-ion-close"></i>
-                    </button>
-                    <div class="modal-dialog " role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-md-8 col-sm-6 col-xs-12">
-                                        <div class="modal-image">
-                                            <img class="img-responsive" src="<?= echoPath(_IMGS_, 'shop/products/modal-product.jpg') ?>"
-                                                alt="product-img" />
-                                        </div>
+            <div class="modal product-modal fade" id="product-modal">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="tf-ion-close"></i>
+                </button>
+                <div class="modal-dialog " role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="row" id='item'>
+                                <div class="col-md-8 col-sm-6 col-xs-12">
+                                    <div class="modal-image">
+                                        <img class="img-responsive" src="<?= echoPath(_IMGS_, 'shop/products/modal-product.jpg') ?>" alt="product-img" />
                                     </div>
-                                    <div class="col-md-4 col-sm-6 col-xs-12">
-                                        <div class="product-short-details">
-                                            <h2 class="product-title">GM Pendant, Basalt Grey</h2>
-                                            <p class="product-price">$200</p>
-                                            <p class="product-short-description">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem iusto
-                                                nihil cum. Illo laborum numquam rem aut officia dicta cumque.
-                                            </p>
-                                            <a href="cart.html" class="btn btn-main">Add To Cart</a>
-                                            <a href="product-single.html" class="btn btn-transparent">View Product
-                                                Details</a>
-                                        </div>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <div class="product-short-details">
+                                        <h2 class="product-title" id='title'>GM Pendant, Basalt Grey</h2>
+                                        <p class="product-price" id='price'>$200</p>
+                                        <p class="product-short-description" id='desc'>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem iusto nihil cum. Illo laborum numquam rem aut officia dicta cumque.
+                                        </p>
+                                        <a href="cart.html" class="btn btn-main">Add To Cart</a>
+                                        <a href="product-single.html" class="btn btn-transparent">View Product Details</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div><!-- /.modal -->
+                </div>
+            </div><!-- /.modal -->  
 
             </div>
         </div>
     </section>
 
+
+    <script>
+        
+    </script>
     <?php
     include(_TEMPS_."footer.php");
     ob_end_flush();

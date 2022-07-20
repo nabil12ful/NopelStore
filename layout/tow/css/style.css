@@ -2373,3 +2373,14 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
     text-decoration: none;
     border-radius: 8px;
 }
+.btns ul li a.active {
+    background: rgb(24, 24, 73);
+    padding: 5px 12px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.btns.d-none {
+    display: none;
+}
