@@ -612,11 +612,21 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
   right: 0;
   max-width: 300px;
 }
+#mo{
+  left: auto;
+  right: 180px;
+  width: 219px;
+}
 @media (max-width: 480px) {
   .top-header .dropdown-menu {
     right: 0;
     left: 0;
     max-width: 100%;
+  }
+  #mo{
+    left: auto;
+    right: 101px;
+    width: 218px;
   }
 }
 .top-header .contact-number {

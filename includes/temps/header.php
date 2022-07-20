@@ -30,11 +30,26 @@
                     </div>
                 </div>
                 <div class="col-md-4 col-xs-12 col-sm-4">
-                    <!-- Cart -->
+                    <!-- Cart + account -->
+                   
                     <ul class="top-menu text-right list-inline">
+                        <!-- account -->
                         <li class="dropdown cart-nav dropdown-slide">
                             <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i
-                                    class="tf-ion-android-cart"></i>Cart</a>
+                                    class="fa fa-user"></i>Account</a>
+                            <div class="dropdown-menu cart-dropdown" id="mo">
+                                <!-- account Item -->
+                                <ul class="text-center cart-buttons">
+                                    <li><a href="cart.html" class="btn btn-small">Register</a></li>
+                                    <li><a href="checkout.html" class="btn btn-small btn-solid-border">Login</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- /account -->
+                         <!-- cart -->
+                        <li class="dropdown cart-nav dropdown-slide">
+                            <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i
+                                    class="tf-ion-android-cart"></i>cart</a>
                             <div class="dropdown-menu cart-dropdown">
                                 <!-- Cart Item -->
                                 <div class="media">
@@ -62,7 +77,8 @@
                                             <span>1 x</span>
                                             <span>1250.00</span>
                                         </div>
-                                        <h5><strong>$1200</strong></h5>
+                                        <h5>
+                                        <strong>$1200</strong></h5>
                                     </div>
                                     <a href="#!" class="remove"><i class="tf-ion-close"></i></a>
                                 </div><!-- / Cart Item -->
@@ -77,7 +93,8 @@
                                 </ul>
                             </div>
 
-                        </li><!-- / Cart -->
+                        </li>
+                        <!-- /cart -->
 
                         <!-- Search -->
                         <li class="dropdown search dropdown-slide">
@@ -99,7 +116,8 @@
                             </select>
                         </li><!-- / Languages -->
 
-                    </ul><!-- / .nav .navbar-nav .navbar-right -->
+                    </ul>
+                    <!-- / .nav .navbar-nav .navbar-right -->
                 </div>
             </div>
         </div>
