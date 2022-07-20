@@ -1,6 +1,9 @@
 <?php
 
 ob_start();
+if(!isset($_SESSION['id'])){
+    header('location: login.php');
+}
 $title = "NopelStore | Shop";
 include('init.php'); ?>
 <? //content 

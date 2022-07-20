@@ -101,4 +101,28 @@
         });
     });
 
+    $('#username').keyup(function(){
+        var item = $(this).val();
+        $('.username').load("checkUser.php?item="+item+'&col=Username',
+            function (data, textStatus, jqXHR) {
+                
+            }
+        );
+        
+    });
+
+    $('#email').keyup(function(){
+        var item = $(this).val();
+        $('.email').load("checkUser.php?item="+item+'&col=Email',
+            function (data, textStatus, jqXHR) {
+                
+            }
+        );
+        
+    });
+
+
+
+    
+
 })(jQuery);

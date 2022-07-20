@@ -54,7 +54,7 @@ function redirect($Msg, $url = NULL, $sec = 3, $type = "error"){
 
 function getAge($birthdate){
     $today = date("Y-m-d");
-    $age = date_diff(date_create($birthdate), date_create($today));
+    $age = date_diff(@date_create($birthdate), date_create($today));
     return $age->format('%y Years %m Months %d Days');
 }
 

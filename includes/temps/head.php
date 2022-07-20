@@ -10,7 +10,7 @@
         <!-- Themefisher Icon font -->
         <link rel="stylesheet" href="<?= echoPath(_PLG_, 'themefisher-font/style.css') ?>">
         <!-- bootstrap.min css -->
-        <link rel="stylesheet" href="<?= echoPath(_PLG_, 'bootstrap/css/bootstrap.min.css') ?>">
+        <link rel="stylesheet" href="<?= echoPath(_PLG_, 'bootstrap/css/bootstrap.min.css', true) ?>">
         <!-- Animate css -->
         <link rel="stylesheet" href="<?= echoPath(_PLG_, 'animate/animate.css') ?>">
         <!-- Slick Carousel -->
