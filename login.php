@@ -5,6 +5,7 @@ session_start();
 $title = "NopelStore | Signup";
 include('init.php');
 
+// session_destroy();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $pass  = $_POST['password'];
@@ -39,8 +40,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $_SESSION['emailValue'] = $email;
     $errors = validate($pass, 'pass', "Password", 8, 24, $errors, false);
     // echo "<pre>";
-    // print_r($errors);
+    // print_r($_SESSION);
     // echo "</pre>";
+    // print_r($_SESSION);
+
     if (empty($errors)) {
         $stmt = $con->prepare("SELECT * FROM customers WHERE Email = ?");
         $stmt->execute(array($email));
@@ -50,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if($hashPass == $cust['Password']){
                 if($cust['RegStatus'] == 1){
                     if($cust['Blocked'] == 0){
-                        $_SESSION['id'] = $cust['ID'];
+                        $_SESSION['customer_id'] = $cust['ID'];
                         header("Location: index.php");
                         exit();
                     }else{
@@ -67,7 +70,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['message'] = "This Email is not found is our Database.";
         }
     }
-    unset($_POST);
 }
 
 ?>

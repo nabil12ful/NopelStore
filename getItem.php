@@ -6,7 +6,7 @@ define("_UPLAODS_", "data/uploads/");
 include(_FUNCS_ . "func.php");
 include('connect.php');
 
-if (isset($_SESSION['id']) && ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id']))) {
+if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id'])) {
     $stmt = $con->prepare('SELECT products.*, product_image.Image_Path AS Images FROM `products`
                             INNER JOIN product_image ON Product_ID = products.ID WHERE product_image.Flag = 1 AND products.ID = ?');
     $stmt->execute([$_GET['id']]);
@@ -20,7 +20,7 @@ if (isset($_SESSION['id']) && ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GE
     <div class="col-md-4 col-sm-6 col-xs-12">
         <div class="product-short-details">
             <h2 class="product-title"><?= $item['Title'] ?></h2>
-            <p class="product-price"><?= $item['Price'] ?></p>
+            <p class="product-price">EGP <?= $item['Price'] ?></p>
             <p class="product-short-description">
                 <?= $item['Description'] ?>
             </p>

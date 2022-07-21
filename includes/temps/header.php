@@ -1,4 +1,13 @@
-
+<?php
+    // include_once('connect.php');
+    if(isset($_SESSION['customer_id'])){
+        $stmt = $con->prepare('SELECT * FROM customers WHERE ID = ?');
+        $stmt->execute([$_SESSION['customer_id']]);
+        $cust = $stmt->fetch();
+    }
+    
+    // $stmt->close();
+?>
 <body id="body">
     <!-- Start Top Header Bar -->
     <section class="top-header">
@@ -36,13 +45,25 @@
                         <!-- account -->
                         <li class="dropdown cart-nav dropdown-slide">
                             <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i
-                                    class="fa fa-user"></i>Account</a>
-                            <div class="dropdown-menu cart-dropdown" id="mo">
+                                    class="fa fa-user"></i><?= isset($_SESSION['customer_id']) ? $cust['Full_Name'] : 'Account' ?></a>
+                            <div class="dropdown-menu cart-dropdown text-center" id="mo">
                                 <!-- account Item -->
-                                <ul class="text-center cart-buttons">
-                                    <li><a href="cart.html" class="btn btn-small">Register</a></li>
-                                    <li><a href="checkout.html" class="btn btn-small btn-solid-border">Login</a></li>
-                                </ul>
+                                
+                                <?php
+                                    if(isset($_SESSION['customer_id'])){?>
+                                    <ul class="text-center cart-buttons">
+                                        <li><a href="profile.php" class="btn btn-small btn-solid-border">Profile</a></li>
+                                        <li><a href="logout.php" class="btn btn-small btn-solid-border">Logout</a></li>
+                                    </ul>
+                                    <?php
+                                    }else{
+                                ?>
+                                    <ul class="text-center cart-buttons">
+                                        <li><a href="signup.php" class="btn btn-small btn-solid-border">Register</a></li>
+                                        <li><a href="login.php" class="btn btn-small btn-solid-border">Login</a></li>
+                                    </ul>
+                                <?php } ?>
+                                
                             </div>
                         </li>
                         <!-- /account -->

@@ -121,6 +121,14 @@
         
     });
 
+    $('.addToCard').click(function(){
+        var id = $(this).parent().parent().parent('.product-thumb').attr('data-id');
+        var img = $(this).parent().parent().prev('img').attr('src');
+        var title = $(this).parent().parent().parent().next('.product-content').find('h4').text();
+        var price = $(this).parent().parent().parent().next('.product-content').find('span').text();
+        // console.log(parseInt(price));
+        // $.
+    });
 
 
     

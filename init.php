@@ -1,6 +1,6 @@
 <?php
 // Database Connect
-include("connect.php");
+include_once("connect.php");
 // Paths
     define("_FUNCS_", "includes/funcs/");
     define("_LANGS_", "includes/langs/");

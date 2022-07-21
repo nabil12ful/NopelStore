@@ -1,9 +1,7 @@
 <?php
 
 ob_start();
-if(!isset($_SESSION['id'])){
-    header('location: login.php');
-}
+session_start();
 $title = "NopelStore | Shop";
 include('init.php'); ?>
 <? //content 
@@ -25,6 +23,9 @@ include('init.php'); ?>
     </div>
 </section>
 
+<div class="alert alert-success pop">
+    <h3>Hello</h3>
+</div>
 
 <section class="products section">
     <div class="container">
@@ -55,9 +56,10 @@ include('init.php'); ?>
                 $prods = $stmt->fetchAll();
                 foreach($prods AS $prod){ ?>
 
+
                     <div class="col-md-4">
                         <div class="product-item">
-                            <div class="product-thumb">
+                            <div class="product-thumb" data-id="<?= $prod['ID'] ?>">
                                 <!-- <span class="bage">Sale</span> -->
                                 <img class="img-responsive" src="<?= echoPath(_UPLAODS_, $prod['Images']) ?>" alt="product-img" />
                                 <div class="preview-meta">
@@ -70,15 +72,15 @@ include('init.php'); ?>
                                         <li>
                                             <a href="#!"><i class="tf-ion-ios-heart"></i></a>
                                         </li>
-                                        <li>
-                                            <a href="#!"><i class="tf-ion-android-cart"></i></a>
+                                        <li class="addToCard">
+                                            <a href="#!"><i class="tf-ion-android-cart "></i></a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="product-content">
                                 <h4><a href="product-single.html"><?= $prod['Title'] ?></a></h4>
-                                <p class="price">EGP <?= $prod['Price'] ?></p>
+                                <p class="price">EGP <span><?= $prod['Price'] ?></span></p>
                             </div>
                         </div>
                     </div>
