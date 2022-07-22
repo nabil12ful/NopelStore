@@ -4,8 +4,7 @@ ob_start();
 session_start();
 $title = "NopelStore | Shop";
 include('init.php'); ?>
-<? //content 
-?>
+<? //content ?>
 
 <section class="page-header">
     <div class="container">
@@ -22,11 +21,6 @@ include('init.php'); ?>
         </div>
     </div>
 </section>
-
-<div class="alert alert-success pop">
-    <h3>Hello</h3>
-</div>
-
 <section class="products section">
     <div class="container">
         <div class="row">
@@ -74,6 +68,7 @@ include('init.php'); ?>
                                         </li>
                                         <li class="addToCard">
                                             <a href="#!"><i class="tf-ion-android-cart "></i></a>
+                                            <span class="ca" style="display:none;"></span>
                                         </li>
                                     </ul>
                                 </div>
@@ -86,8 +81,7 @@ include('init.php'); ?>
                     </div>
 
             <?php } ?>
-
-
+            
             <!-- Modal -->
             <div class="modal product-modal fade" id="product-modal">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">

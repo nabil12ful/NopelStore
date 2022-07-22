@@ -126,8 +126,24 @@
         var img = $(this).parent().parent().prev('img').attr('src');
         var title = $(this).parent().parent().parent().next('.product-content').find('h4').text();
         var price = $(this).parent().parent().parent().next('.product-content').find('span').text();
-        // console.log(parseInt(price));
-        // $.
+        // title = parse(title);
+        var url = "addtocard.php?"+id+"&"+img+"&"+title+"&"+price+"&count=1";
+        // console.log(encodeURIComponent(url));
+        // $('.ca').load(encodeURI(url), function(data, textStatus, jqXHR){
+        //     console.log(data);
+        // });
+        $('.cart-dropdown').load("addtocard.php",
+            {
+                id: id,
+                img: img,
+                title: title,
+                price: price,
+                count: 1
+            },
+            function (response, status, request) {
+             // dom element
+            $(this).html(response);
+        });
     });
 
 

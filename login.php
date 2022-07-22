@@ -118,6 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 if (isset($_SESSION['pass'])) {
                                     echo $_SESSION['pass'];
                                     unset($_SESSION['pass']);
+                                    unset($_SESSION['passValue']);
                                 }
                                 ?>
                             </span>
