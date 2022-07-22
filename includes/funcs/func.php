@@ -40,7 +40,7 @@
     ##  Validate input Of Forms
     ##
     */#=======================================
-    function validate($input, $nameOfSession, $labelOfInput, $min, $max, $errs, $type = null, $colName = null, bool $saveInputValue = true){
+    function validate($input, $nameOfSession, $labelOfInput, $min, $max, $errs, bool $saveInputValue = true){
         $len = strlen($input);
         if(!$len == 0){
             if($len <= $min){
@@ -56,14 +56,6 @@
         }else{
             $_SESSION["$nameOfSession"] = "$labelOfInput most be required.";
             $errs[] = "$labelOfInput most be required.";
-        }
-        if($type != null){
-            $check = checkItem($input, $type, 'customers');
-            if($check == 1){
-                $msg = "This $labelOfInput is exist";
-                $_SESSION[$nameOfSession] = $msg;
-                $errs[] = $msg;
-            }
         }
         if($saveInputValue == true){
             // unset($_SESSION[$nameOfSession.'Value']);
@@ -93,3 +85,26 @@
         }
         return $stmt->rowCount();
     }
+
+
+    function resortingArry(array $array){
+        $keys = array_keys($array);
+        $count = count($array);
+        $newArray = [];
+        for($i=0; $i < $count; $i++){
+            $key = $keys[$i];
+            $newArray[] = $array[$key];
+        }
+        return $newArray;
+    }
+
+    function getTotal(array $array){
+        $array = resortingArry($array);
+        $count = count($array);
+        $total = 0;
+        for($i=0; $i < $count; $i++){
+            $total += ($array[$i]['price'] * $array[$i]['count']);
+        }
+        return $total;
+    }
+    

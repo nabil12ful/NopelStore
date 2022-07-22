@@ -1,11 +1,19 @@
 <?php
     // include_once('connect.php');
+    $total = 0;
     if(isset($_SESSION['customer_id'])){
         $stmt = $con->prepare('SELECT * FROM customers WHERE ID = ?');
         $stmt->execute([$_SESSION['customer_id']]);
         $cust = $stmt->fetch();
     }
-    
+    if(isset($_SESSION['card']['products'])){
+        $arr = array_slice($_SESSION['card']['products'], -2, 2, true);
+        $arr = resortingArry($arr);
+        
+        $total = getTotal($_SESSION['card']['products']);
+    }elseif(!isset($_SESSION['card']['products'])){
+        $_SESSION['card']['products'] = [];
+    }
     // $stmt->close();
 ?>
 <body id="body">
@@ -72,41 +80,30 @@
                             <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i
                                     class="tf-ion-android-cart"></i>cart</a>
                             <div class="dropdown-menu cart-dropdown">
-                                <!-- Cart Item -->
-                                <div class="media">
-                                    <a class="pull-left" href="#!">
-                                        <img class="media-object" src="<?= echoPath(_IMGS_, 'shop/cart/cart-1.jpg') ?>" alt="image" />
-                                    </a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading"><a href="#!">Ladies Bag</a></h4>
-                                        <div class="cart-price">
-                                            <span>1 x</span>
-                                            <span>1250.00</span>
-                                        </div>
-                                        <h5><strong>$1200</strong></h5>
-                                    </div>
-                                    <a href="#!" class="remove"><i class="tf-ion-close"></i></a>
-                                </div><!-- / Cart Item -->
-                                <!-- Cart Item -->
-                                <div class="media">
-                                    <a class="pull-left" href="#!">
-                                        <img class="media-object" src="<?= echoPath(_IMGS_, 'shop/cart/cart-2.jpg') ?>" alt="image" />
-                                    </a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading"><a href="#!">Ladies Bag</a></h4>
-                                        <div class="cart-price">
-                                            <span>1 x</span>
-                                            <span>1250.00</span>
-                                        </div>
-                                        <h5>
-                                        <strong>$1200</strong></h5>
-                                    </div>
-                                    <a href="#!" class="remove"><i class="tf-ion-close"></i></a>
-                                </div><!-- / Cart Item -->
-
+                                <div class="items">
+                                    <?php
+                                    $arr = array_slice($_SESSION['card']['products'], -2, 2, true);
+                                    foreach ($arr as $ar) { ?>
+                                        <!-- Cart Item -->
+                                        <div class="media">
+                                            <a class="pull-left" href="#!">
+                                                <img class="media-object" src="<?= $ar['img'] ?>" alt="image" />
+                                            </a>
+                                            <div class="media-body">
+                                                <h4 class="media-heading"><a href="#!"><?= $ar['title'] ?></a></h4>
+                                                <div class="cart-price">
+                                                    <span><?= $ar['count'] ?> x</span>
+                                                    <span><?= $ar['price'] ?></span>
+                                                </div>
+                                                <h5><strong><?= $ar['count'] * $ar['price'] ?></strong></h5>
+                                            </div>
+                                            <a href="#!" class="remove"><i class="tf-ion-close"></i></a>
+                                        </div><!-- / Cart Item -->
+                                    <?php } ?>
+                                </div>
                                 <div class="cart-summary">
                                     <span>Total</span>
-                                    <span class="total-price">$1799.00</span>
+                                    <span class="total-price"><?= $total ?></span>
                                 </div>
                                 <ul class="text-center cart-buttons">
                                     <li><a href="cart.html" class="btn btn-small">View Cart</a></li>
