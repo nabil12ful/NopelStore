@@ -2874,11 +2874,46 @@ input[type=tel]:focus {
     border: 1px solid var(--danger) !important;
 }
 
-.pop{
-    width: 50%;
-    /* height: 73px; */
+.popup{
+    background:#fff ;
+    border-radius: 6px;
     position: absolute;
-    right: 10px;
-    top: 320px;
-    z-index: 1000;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0.1);
+    text-align: center;
+    padding: 0 30px 30px ;
+    color: #333;
+    z-index: 100;
+    visibility: hidden;
+}
+.open-popup{
+    visibility: visible;
+    top: 322%;
+    transform: translate(-50%,-50%) scale(1);
+
+}
+.popup img{
+    width: 100px;
+    margin-top:-50px ;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+}
+.popup .h22,.pp {
+    font-size: 38px;
+    font-weight: 500;
+    margin: 30px 0 10px;
+}
+.popup button {
+    width: 100%;
+    margin-top: 50px;
+    padding: 10px 0;
+    background:#6fd649 ;
+    color: #fff;
+    border: 0;
+    outline: none;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.02);
 }

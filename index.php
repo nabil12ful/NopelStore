@@ -85,11 +85,13 @@
                                                 <a href="#!"><i class="tf-ion-ios-heart"></i></a>
                                             </li>
                                             <li>
-                                                <a href="#!"><i class="tf-ion-android-cart"></i></a>
+                                                <a href="#!"><i class="tf-ion-android-cart" onclick="openPopup()"></i></a>
+                                              
                                             </li>
-                                        </ul>
+                                        </ul> 
                                     </div>
                                 </div>
+                                
                                 <div class="product-content">
                                     <h4><a href="product-single.html"><?= $prod['Title'] ?></a></h4>
                                     <p class="price">EGP <?= $prod['Price'] ?></p>
@@ -98,7 +100,13 @@
                         </div>
 
                 <?php } ?>
-                
+                <div class="popup" id="popup">
+
+                    <img src="layout\tow\images/true.png" alt="" >
+                     <h2 class="">Thank You!</h2>
+                     <p  class="pp">تم اضافه الي السله بنجاح</p>
+                     <button type="button" onclick="closePopup()">حسنا</button>
+                </div>
 
                 <!-- Modal -->
             <div class="modal product-modal fade" id="product-modal">
@@ -137,7 +145,13 @@
 
 
     <script>
-        
+       let  popup = document.getElementById("popup");
+       function openPopup(){
+        popup.classList.add("open-popup");
+       }
+       function closePopup(){
+        popup.classList.remove("open-popup");
+       }
     </script>
     <?php
     include(_TEMPS_."footer.php");
