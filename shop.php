@@ -91,22 +91,7 @@ include('init.php'); ?>
                     <div class="modal-content">
                         <div class="modal-body">
                             <div class="row" id='item'>
-                                <div class="col-md-8 col-sm-6 col-xs-12">
-                                    <div class="modal-image">
-                                        <img class="img-responsive" src="<?= echoPath(_IMGS_, 'shop/products/modal-product.jpg') ?>" alt="product-img" />
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-6 col-xs-12">
-                                    <div class="product-short-details">
-                                        <h2 class="product-title" id='title'>GM Pendant, Basalt Grey</h2>
-                                        <p class="product-price" id='price'>$200</p>
-                                        <p class="product-short-description" id='desc'>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem iusto nihil cum. Illo laborum numquam rem aut officia dicta cumque.
-                                        </p>
-                                        <a href="cart.html" class="btn btn-main">Add To Cart</a>
-                                        <a href="product-single.html" class="btn btn-transparent">View Product Details</a>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -153,7 +138,15 @@ include('init.php'); ?>
         </ul>
     </div>
 
-
+<script>
+    // function add(){
+    //     var id = $(this).parent().attr('data-id');
+    //     var img = $('.img-box').attr('src');
+    //     var title = $('.product-title').text();
+    //     var price = $('.product-price').text();
+    //     console.log('title=' + title);
+    // }
+</script>
 <?php
 include(_TEMPS_ . "footer.php");
 ob_end_flush();

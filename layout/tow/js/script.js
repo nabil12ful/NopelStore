@@ -121,18 +121,33 @@
         
     });
 
+        
+    $('#additem').click(function(){
+        var id = $(this).parent().attr('data-id');
+        var img = $('.img-box').attr('src');
+        var title = $('.product-title').text();
+        var price = $('.product-price').text();
+        console.log('title=' + title);
+        // $('.cart').load("cart.php?add",
+        //     {
+        //         id: id,
+        //         img: img,
+        //         title: title,
+        //         price: price,
+        //         count: 1
+        //     },
+        //     function (response, status, request) {
+        //      // dom element
+        //     $(this).html(response);
+        // });
+    });
+
     $('.addToCard').click(function(){
         var id = $(this).parent().parent().parent('.product-thumb').attr('data-id');
         var img = $(this).parent().parent().prev('img').attr('src');
         var title = $(this).parent().parent().parent().next('.product-content').find('h4').text();
         var price = $(this).parent().parent().parent().next('.product-content').find('span').text();
-        // title = parse(title);
-        var url = "addtocard.php?"+id+"&"+img+"&"+title+"&"+price+"&count=1";
-        // console.log(encodeURIComponent(url));
-        // $('.ca').load(encodeURI(url), function(data, textStatus, jqXHR){
-        //     console.log(data);
-        // });
-        $('.cart-dropdown').load("addtocard.php",
+        $('.cart').load("cart.php?add",
             {
                 id: id,
                 img: img,
@@ -142,6 +157,17 @@
             },
             function (response, status, request) {
              // dom element
+            $(this).html(response);
+        });
+    });
+
+    $('.remove').click(function(){
+        var id = $(this).attr('data-id');
+        $('.cart').load("cart.php?delete",
+        {
+            id: id
+        },
+        function(response, status, request){
             $(this).html(response);
         });
     });

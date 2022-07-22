@@ -84,7 +84,7 @@
                                             <li>
                                                 <a href="#!"><i class="tf-ion-ios-heart"></i></a>
                                             </li>
-                                            <li>
+                                            <li class="addToCard">
                                                 <a href="#!"><i class="tf-ion-android-cart" onclick="openPopup()"></i></a>
                                               
                                             </li>
@@ -129,7 +129,7 @@
                                         <p class="product-short-description" id='desc'>
                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem iusto nihil cum. Illo laborum numquam rem aut officia dicta cumque.
                                         </p>
-                                        <a href="cart.html" class="btn btn-main">Add To Cart</a>
+                                        <a href="cart.html" class="btn btn-main addToCard">Add To Cart</a>
                                         <a href="product-single.html" class="btn btn-transparent">View Product Details</a>
                                     </div>
                                 </div>

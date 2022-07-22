@@ -48,7 +48,6 @@
                 </div>
                 <div class="col-md-4 col-xs-12 col-sm-4">
                     <!-- Cart + account -->
-                   
                     <ul class="top-menu text-right list-inline">
                         <!-- account -->
                         <li class="dropdown cart-nav dropdown-slide">
@@ -75,36 +74,39 @@
                             </div>
                         </li>
                         <!-- /account -->
-                         <!-- cart -->
+                        <!-- cart -->
                         <li class="dropdown cart-nav dropdown-slide">
                             <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i
                                     class="tf-ion-android-cart"></i>cart</a>
                             <div class="dropdown-menu cart-dropdown">
-                                <div class="items">
-                                    <?php
-                                    $arr = array_slice($_SESSION['card']['products'], -2, 2, true);
-                                    foreach ($arr as $ar) { ?>
-                                        <!-- Cart Item -->
-                                        <div class="media">
-                                            <a class="pull-left" href="#!">
-                                                <img class="media-object" src="<?= $ar['img'] ?>" alt="image" />
-                                            </a>
-                                            <div class="media-body">
-                                                <h4 class="media-heading"><a href="#!"><?= $ar['title'] ?></a></h4>
-                                                <div class="cart-price">
-                                                    <span><?= $ar['count'] ?> x</span>
-                                                    <span><?= $ar['price'] ?></span>
+                                <div class="cart">
+                                    <div class="items">
+                                        <?php
+                                        $arr = array_slice($_SESSION['card']['products'], -2, 2, true);
+                                        foreach ($arr as $ar) { ?>
+                                            <!-- Cart Item -->
+                                            <div class="media">
+                                                <a class="pull-left" href="#!">
+                                                    <img class="media-object" src="<?= $ar['img'] ?>" alt="image" />
+                                                </a>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading"><a href="#!"><?= $ar['title'] ?></a></h4>
+                                                    <div class="cart-price">
+                                                        <span><?= $ar['count'] ?> x</span>
+                                                        <span><?= $ar['price'] ?></span>
+                                                    </div>
+                                                    <h5><strong><?= $ar['count'] * $ar['price'] ?></strong></h5>
                                                 </div>
-                                                <h5><strong><?= $ar['count'] * $ar['price'] ?></strong></h5>
-                                            </div>
-                                            <a href="#!" class="remove"><i class="tf-ion-close"></i></a>
-                                        </div><!-- / Cart Item -->
-                                    <?php } ?>
+                                                <a href="#!" class="remove" data-id="<?= $ar['id'] ?>"><i class="tf-ion-close"></i></a>
+                                            </div><!-- / Cart Item -->
+                                        <?php } ?>
+                                    </div>
+                                    <div class="cart-summary">
+                                        <span>Total</span>
+                                        <span class="total-price"><?= $total ?></span>
+                                    </div>
                                 </div>
-                                <div class="cart-summary">
-                                    <span>Total</span>
-                                    <span class="total-price"><?= $total ?></span>
-                                </div>
+
                                 <ul class="text-center cart-buttons">
                                     <li><a href="cart.html" class="btn btn-small">View Cart</a></li>
                                     <li><a href="checkout.html" class="btn btn-small btn-solid-border">Checkout</a></li>

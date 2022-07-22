@@ -35,10 +35,21 @@ for($i=0; $i < $count; $i++){
 
 echo $total = getTotal($arr);
 
-// delete item from 
+// // delete item from cart
+// $id = "30";
+// foreach($arr AS $ar){
+//     if($ar['id'] == $id){
+//         unset($arr[$id]);
+//         // echo session_reset();
+//         // echo 'Deleted';
+//     }
+// }
+
+unset($_SESSION['card']['products'][31]);
+
 
 ?>
 
 <pre>
-    <?php //print_r($newArr) ?>
+    <?php print_r($arr) ?>
 </pre>
